@@ -7,26 +7,25 @@
 // to be ignored.  The comment lines must appear on
 // lines by themselves, with blank lines surrounding
 // them.
-'use strict';
+'use strict'
 
-var pandoc = require('../../../index');
+var pandoc = require('../../../index')
 
-var incomment = false;
+var incomment = false
 
-function action(type,value,format,meta) {
-	if (type === 'RawBlock') {
-		if (value[0] === 'html') {
-			if (value[1].indexOf('<!-- BEGIN COMMENT -->') !== -1) {
-				incomment = true;
-				return [];
-			}
-			else if (value[1].indexOf('<!-- END COMMENT -->') !== -1) {
-				incomment = false;
-				return [];
-			}
-		}
-	}
-	if (incomment) return [];
+function action (type, value, format, meta) {
+  if (type === 'RawBlock') {
+    if (value[0] === 'html') {
+      if (value[1].indexOf('<!-- BEGIN COMMENT -->') !== -1) {
+        incomment = true
+        return []
+      } else if (value[1].indexOf('<!-- END COMMENT -->') !== -1) {
+        incomment = false
+        return []
+      }
+    }
+  }
+  if (incomment) return []
 }
 
-pandoc.stdio(action);
+pandoc.stdio(action)

@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 
 // same as caps test, but using updated JSON format
-'use strict';
+'use strict'
 
-var pandoc = require('../../../index');
-var Str = pandoc.Str;
+var pandoc = require('../../../index')
+var Str = pandoc.Str
 
-function action(type,value,format,meta) {
-	if (type === 'Str') return Str(value.toUpperCase());
+function action (type, value, format, meta) {
+  if (type === 'Str') return Str(value.toUpperCase())
 }
 
-pandoc.stdio(action);
+pandoc.stdio(action)
